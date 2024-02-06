@@ -164,3 +164,14 @@ Cypress.Commands.add('deleteConversation', (conversationId) =>
     'DELETE'
   )
 );
+
+Cypress.Commands.add('assistantSetup', () => {
+  cy.addAssistantRequiredSettings();
+  cy.registerRootAgent();
+  cy.startDummyServer();
+});
+
+Cypress.Commands.add('assistantCleanup', () => {
+  cy.cleanRootAgent();
+  cy.stopDummyServer();
+});
